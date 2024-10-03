@@ -338,9 +338,13 @@ module ibex_alu #(
         default:      shift_operand = shift_left ? operand_a_rev : operand_a_i;
       endcase
     end
+// Level 1 bug
 
+    // shift_result_ext_signed =
+    //     $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >>> shift_amt[4:0];
     shift_result_ext_signed =
-        $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >>> shift_amt[4:0];
+        $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >> shift_amt[4:0];
+////////////////////////////////
     shift_result_ext = $unsigned(shift_result_ext_signed);
 
     shift_result            = shift_result_ext[31:0];

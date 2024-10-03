@@ -336,8 +336,12 @@ package ibex_pkg;
     '{irq_ext: 1'b0, irq_int: 1'b0, lower_cause: 5'd00};
   localparam exc_cause_t ExcCauseInstrAccessFault =
     '{irq_ext: 1'b0, irq_int: 1'b0, lower_cause: 5'd01};
+    // Level 3 bug
   localparam exc_cause_t ExcCauseIllegalInsn =
-    '{irq_ext: 1'b0, irq_int: 1'b0, lower_cause: 5'd02};
+    '{irq_ext: 1'b0, irq_int: 1'b0, lower_cause: 5'd07};
+  // localparam exc_cause_t ExcCauseIllegalInsn =
+  //   '{irq_ext: 1'b0, irq_int: 1'b0, lower_cause: 5'd02};
+  /////////////////////////////////////
   localparam exc_cause_t ExcCauseBreakpoint =
     '{irq_ext: 1'b0, irq_int: 1'b0, lower_cause: 5'd03};
   localparam exc_cause_t ExcCauseLoadAccessFault  =

@@ -988,8 +988,10 @@ module ibex_id_stage #(
     // (otherwide we might issue two requests for the same instruction)
     `ASSERT(IbexStallMemNoRequest,
       instr_valid_i & lsu_req_dec & ~instr_done |-> ~lsu_req_done_i)
-
-    assign rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_a_o) & |rf_raddr_a_o;
+    //Level 2 bug/////////////////////
+    // assign rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_a_o) & |rf_raddr_a_o;
+    assign rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_b_o) & |rf_raddr_a_o;
+   /////////////////////////////////
     assign rf_rd_b_wb_match = (rf_waddr_wb_i == rf_raddr_b_o) & |rf_raddr_b_o;
 
     assign rf_rd_a_wb_match_o = rf_rd_a_wb_match;
