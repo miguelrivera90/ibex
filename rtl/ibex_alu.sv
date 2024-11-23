@@ -340,10 +340,10 @@ module ibex_alu #(
     end
 // Level 1 bug
 
-    // shift_result_ext_signed =
-    //     $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >>> shift_amt[4:0];
     shift_result_ext_signed =
-        $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >> shift_amt[4:0];
+        $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >>> shift_amt[4:0];
+    // shift_result_ext_signed =
+    //     $signed({shift_ones | (shift_arith & shift_operand[31]), shift_operand}) >> shift_amt[4:0];
 ////////////////////////////////
     shift_result_ext = $unsigned(shift_result_ext_signed);
 
