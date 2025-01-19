@@ -266,7 +266,8 @@ module ibex_alu #(
   assign bfp_op = (RV32B != RV32BNone) ? (operator_i == ALU_BFP) : 1'b0;
   assign bfp_len = {~(|operand_b_i[27:24]), operand_b_i[27:24]}; // len = 0 encodes for len = 16
   assign bfp_off = operand_b_i[20:16];
-  assign bfp_mask = (RV32B != RV32BNone) ? ~(32'hffff_ffff << bfp_len) : '0;
+  //assign bfp_mask = (RV32B != RV32BNone) ? ~(32'hffff_ffff << bfp_len) : '0; // original from below
+  assign bfp_mask = (RV32B != RV32BNone) ? ~(32'hefff_ffff << bfp_len) : '0; // added a bug here
   for (genvar i = 0; i < 32; i++) begin : gen_rev_bfp_mask
     assign bfp_mask_rev[i] = bfp_mask[31-i];
   end
