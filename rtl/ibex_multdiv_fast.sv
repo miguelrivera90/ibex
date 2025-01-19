@@ -165,7 +165,8 @@ module ibex_multdiv_fast #(
     assign mac_res_ext    = $unsigned(mac_res_signed);
     assign mac_res        = mac_res_ext[33:0];
 
-    assign sign_a = signed_mode_i[0] & op_a_i[31];
+    assign sign_a = signed_mode_i[1] & op_a_i[31]; // inserted bug here
+//    assign sign_a = signed_mode_i[0] & op_a_i[31]; // original from above
     assign sign_b = signed_mode_i[1] & op_b_i[31];
 
     // The first two multipliers are only used in state 1 (MULL). We can assign them statically.
